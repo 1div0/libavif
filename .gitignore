@@ -10,3 +10,4 @@
 .clangd/
 cscope.*
 tags
+/Linux
