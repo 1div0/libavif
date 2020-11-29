@@ -20,7 +20,7 @@ extern "C" {
 // to leverage in-development code without breaking their stable builds.
 #define AVIF_VERSION_MAJOR 0
 #define AVIF_VERSION_MINOR 8
-#define AVIF_VERSION_PATCH 3
+#define AVIF_VERSION_PATCH 4
 #define AVIF_VERSION_DEVEL 1
 #define AVIF_VERSION \
     ((AVIF_VERSION_MAJOR * 1000000) + (AVIF_VERSION_MINOR * 10000) + (AVIF_VERSION_PATCH * 100) + AVIF_VERSION_DEVEL)
@@ -299,10 +299,14 @@ typedef struct avifImageRotation
 
 typedef struct avifImageMirror
 {
-    // 'imir' from ISO/IEC 23008-12:2017 6.5.12
-
-    // axis specifies a vertical (axis = 0) or horizontal (axis = 1) axis for the mirroring operation.
-    uint8_t axis; // legal values: [0, 1]
+    // 'imir' from ISO/IEC 23008-12:2017 6.5.12:
+    // "axis specifies a vertical (axis = 0) or horizontal (axis = 1) axis for the mirroring operation."
+    //
+    // Legal values: [0, 1]
+    //
+    // 0: flip along a vertical axis ("left-to-right")
+    // 1: flip along a horizontal axis ("top-to-bottom")
+    uint8_t axis;
 } avifImageMirror;
 
 // ---------------------------------------------------------------------------
